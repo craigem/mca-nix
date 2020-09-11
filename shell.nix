@@ -5,7 +5,7 @@ let
     name = "shell";
     buildInputs = [ pkgs.niv ];
     shellHook = ''
-      echo "IOHK NIX" \
+      echo "MCA NIX" \
       | ${pkgs.figlet}/bin/figlet -f banner -c \
       | ${pkgs.lolcat}/bin/lolcat
 
