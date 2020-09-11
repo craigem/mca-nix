@@ -35,6 +35,29 @@ let
       relays: [[{ host: ${relay} }]]
   '';
   environments = {
+    mca-mainnet = rec {
+      useByronWallet = true;
+      relays = "relays.mainnet.mcwhirter.com.au";
+      relaysNew = "relays-new.mainnet.mcwhirter.com.au";
+      smashUrl = "https://smash.mainnet.mcwhirter.com.au/api/v1/metadata";
+      edgeNodes = [
+        "3.125.75.199"
+        "18.177.103.105"
+        "18.141.0.112"
+        "52.14.58.121"
+      ];
+      edgePort = 3001;
+      confKey = "mainnet_full";
+      private = false;
+      networkConfig = import ./mca-mainnet-config.nix;
+      nodeConfig = networkConfig // defaultLogConfig;
+      consensusProtocol = networkConfig.Protocol;
+      submitApiConfig = {
+        GenesisHash = nodeConfig.ByronGenesisHash;
+        inherit (networkConfig) RequiresNetworkMagic;
+      } // defaultExplorerLogConfig;
+      explorerConfig = mkExplorerConfig "mca-mainnet" networkConfig;
+    };
     mainnet = rec {
       useByronWallet = true;
       relays = "relays.cardano-mainnet.iohk.io";
