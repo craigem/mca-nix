@@ -49,14 +49,37 @@ let
       edgePort = 3001;
       confKey = "mainnet_full";
       private = false;
-      networkConfig = import ./mca-mainnet-config.nix;
+      networkConfig = import ./mainnet-config.nix;
       nodeConfig = networkConfig // defaultLogConfig;
       consensusProtocol = networkConfig.Protocol;
       submitApiConfig = {
         GenesisHash = nodeConfig.ByronGenesisHash;
         inherit (networkConfig) RequiresNetworkMagic;
       } // defaultExplorerLogConfig;
-      explorerConfig = mkExplorerConfig "mca-mainnet" networkConfig;
+      explorerConfig = mkExplorerConfig "mainnet" networkConfig;
+    };
+    mca-testnet = rec {
+      useByronWallet = true;
+      relays = "relays.testnet.mcwhirter.com.au";
+      relaysNew = "relays-new.testnet.mcwhirter.com.au";
+      smashUrl = "https://smash.testnet.mcwhirter.com.au/api/v1/metadata";
+      edgeNodes = [
+        "3.125.94.58"
+        "18.176.19.63"
+        "13.251.186.36"
+        "3.135.95.164"
+      ];
+      edgePort = 3001;
+      confKey = "testnet_full";
+      private = false;
+      networkConfig = import ./testnet-config.nix;
+      nodeConfig = networkConfig // defaultLogConfig;
+      consensusProtocol = networkConfig.Protocol;
+      submitApiConfig = {
+        GenesisHash = nodeConfig.ByronGenesisHash;
+        inherit (networkConfig) RequiresNetworkMagic;
+      } // defaultExplorerLogConfig;
+      explorerConfig = mkExplorerConfig "testnet" networkConfig;
     };
     mainnet = rec {
       useByronWallet = true;
