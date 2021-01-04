@@ -1,6 +1,14 @@
-# IOHK Common Nix Code
+MCA Common Nix Code
+===================
 
-[![Build status](https://badge.buildkite.com/e5b12d0fd507084fbdb1849da2de467f1de66b3e5c6d954554.svg)](https://buildkite.com/input-output-hk/iohk-nix)
+This is a localised fork of iohk-nix_. The canonical source for this fork is
+mca-nix_.
+
+
+Original README continues below:
+
+-----
+
 
 This repo contains build code and tools shared between IOHK projects.
 
@@ -12,16 +20,21 @@ This repo contains build code and tools shared between IOHK projects.
    projects.
 
 
-## How to use in your project
+How to use in your project
+--------------------------
 
 See [new project skeleton](https://github.com/input-output-hk/cardano-skeleton/).
 
-## When making changes to `iohk-nix`
+When making changes to `iohk-nix`
+---------------------------------
 
 Please document any change that might affect project builds in the
 [ChangeLog](./changelog.md). For example:
 
- - Bumping `nixpkgs` to a different branch.
- - Changing API (renaming attributes, changing function parameters, etc).
+- Bumping `nixpkgs` to a different branch.
+- Changing API (renaming attributes, changing function parameters, etc).
 
 Also update the [`skeleton`](https://github.com/input-output-hk/cardano-skeleton/) project if necessary.
+
+.. _iohk-nix: https://github.com/input-output-hk/iohk-nix
+.. _mca-nix:  https://github.com/craigem/mca-nix

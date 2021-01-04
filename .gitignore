@@ -2,6 +2,7 @@
 \#*\#
 *.*~
 *.bak
+*.swp
 
 ## Editor artifacts and configuration files
 TAGS
